@@ -1,13 +1,19 @@
 package hello.core.member;
 
+import hello.core.AppConfig;
+import hello.core.order.OrderService;
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 public class MemberServiceTest {
-    private final MemberService memberService;
-
-    public MemberServiceTest(MemberService memberService) {
-        this.memberService = memberService;
+    MemberService memberService;
+    OrderService orderService;
+    @BeforeEach
+    public void beforeEach() {
+        AppConfig appConfig = new AppConfig();
+        memberService = appConfig.memberService();
+        orderService = appConfig.orderService();
     }
 
     @Test
